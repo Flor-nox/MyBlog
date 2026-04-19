@@ -1,6 +1,26 @@
 // 共鸣者主题系统 - Resonator Theme System
 // 千咲(湮灭-黑)、爱弥斯(热熔-红紫)、菲比(衍射-黄蓝)、绯雪(冷凝-银蓝)
 
+// 获取基础路径，用于GitHub Pages子路径部署
+const getBasePath = () => {
+  // 在浏览器环境中使用 window.location.pathname 来判断
+  if (typeof window !== 'undefined') {
+    const pathParts = window.location.pathname.split('/');
+    // 如果是 GitHub Pages 部署（路径以 /MyBlog 开头）
+    if (pathParts[1] === 'MyBlog') {
+      return '/MyBlog';
+    }
+  }
+  // 本地开发或根路径部署
+  return '';
+};
+
+// 获取图片路径
+const getImagePath = (filename: string) => {
+  const basePath = getBasePath();
+  return `${basePath}/images/${filename}`;
+};
+
 export type ResonatorType = "chisaki" | "amethyst" | "phoebe" | "feixue";
 
 export interface ResonatorTheme {
@@ -56,9 +76,9 @@ export const resonatorThemes: Record<ResonatorType, ResonatorTheme> = {
       textMuted: "text-indigo-200",
     },
     images: {
-      full: "/images/qianxiao-full.png",
-      icon: "/images/qianxiao-icon.png",
-      avatar: "/images/qianxiao-avatar.png",
+      full: getImagePath("qianxiao-full.png"),
+      icon: getImagePath("qianxiao-icon.png"),
+      avatar: getImagePath("qianxiao-avatar.png"),
     },
     spirit: {
       name: "千咲",
@@ -92,9 +112,9 @@ export const resonatorThemes: Record<ResonatorType, ResonatorTheme> = {
       textMuted: "text-orange-200",
     },
     images: {
-      full: "/images/aimisi-full.png",
-      icon: "/images/aimisi-icon.png",
-      avatar: "/images/aimisi-avatar.png",
+      full: getImagePath("aimisi-full.png"),
+      icon: getImagePath("aimisi-icon.png"),
+      avatar: getImagePath("aimisi-avatar.png"),
     },
     spirit: {
       name: "爱弥斯",
@@ -128,9 +148,9 @@ export const resonatorThemes: Record<ResonatorType, ResonatorTheme> = {
       textMuted: "text-yellow-200",
     },
     images: {
-      full: "/images/feibi-full.png",
-      icon: "/images/feibi-icon.png",
-      avatar: "/images/feibi-avatar.png",
+      full: getImagePath("feibi-full.png"),
+      icon: getImagePath("feibi-icon.png"),
+      avatar: getImagePath("feibi-avatar.png"),
     },
     spirit: {
       name: "菲比",
@@ -164,9 +184,9 @@ export const resonatorThemes: Record<ResonatorType, ResonatorTheme> = {
       textMuted: "text-blue-200",
     },
     images: {
-      full: "/images/feixue-full.png",
-      icon: "/images/feixue-icon.png",
-      avatar: "/images/feixue-avatar.png",
+      full: getImagePath("feixue-full.png"),
+      icon: getImagePath("feixue-icon.png"),
+      avatar: getImagePath("feixue-avatar.png"),
     },
     spirit: {
       name: "绯雪",
